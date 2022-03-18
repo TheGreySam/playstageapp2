@@ -4,8 +4,12 @@
       <v-col class="text-center" cols="12">
         &copy; {{ new Date().getFullYear() }}
         <v-btn class="ml-1" text icon color="pink">
-          
-          <v-img img contain max-height="40" src="@/assets/PSisotipo-lite.svg"></v-img>
+          <v-img
+            img
+            contain
+            max-height="40"
+            src="@/assets/PSisotipo-lite.svg"
+          ></v-img>
         </v-btn>
         <span class="ml-1 footer__username">by <strong>Biznet it</strong></span>
       </v-col>
@@ -14,12 +18,11 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>
 a:-webkit-any-link {
   text-decoration: none;
 }
-
 </style>

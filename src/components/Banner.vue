@@ -15,54 +15,54 @@
 </template>
 
 <script>
-import axios from "../plugins/axios";
-import requests from "../requests";
+import axios from '../plugins/axios'
+import requests from '../requests'
 
 export default {
   data() {
     return {
       showLoading: true,
       movie: {},
-      size: "cover",
-      position: "center center",
-      image: "",
-    };
+      size: 'cover',
+      position: 'center center',
+      image: ''
+    }
   },
   async mounted() {
-    this.showLoading = true;
+    this.showLoading = true
     try {
-      const response = await axios.get(requests.fetchNetflixOriginals);
-      const { results } = response.data;
-      const movieIndex = Math.floor(Math.random() * results.length - 1);
-      this.movie = results[movieIndex];
-      this.image = results[movieIndex]?.backdrop_path;
-      console.log("image here", this.image);
+      const response = await axios.get(requests.fetchNetflixOriginals)
+      const { results } = response.data
+      const movieIndex = Math.floor(Math.random() * results.length - 1)
+      this.movie = results[movieIndex]
+      this.image = results[movieIndex]?.backdrop_path
+      console.log('image here', this.image)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     } finally {
-      this.showLoading = false;
+      this.showLoading = false
     }
   },
   computed: {
-    truncateOverview: function() {
-      let n = 150;
-      const movieOverview = this.movie?.overview;
+    truncateOverview: function () {
+      let n = 150
+      const movieOverview = this.movie?.overview
       return movieOverview?.length > n
-        ? movieOverview.substr(0, n - 1) + "..."
-        : movieOverview;
+        ? movieOverview.substr(0, n - 1) + '...'
+        : movieOverview
     },
-    bannerTitle: function() {
-      return this.movie?.title || this.movie?.name || this.movie?.original_name;
+    bannerTitle: function () {
+      return this.movie?.title || this.movie?.name || this.movie?.original_name
     },
-    headerStyle: function() {
+    headerStyle: function () {
       return {
         backgroundSize: this.size,
         backgroundPosition: this.position,
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${this.image}")`,
-      };
-    },
-  },
-};
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${this.image}")`
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>

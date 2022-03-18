@@ -56,58 +56,58 @@
 </template>
 
 <script>
-import axios from "../plugins/axios";
-import movieTrailer from "movie-trailer";
-import getYouTubeID from "get-youtube-id";
+import axios from '../plugins/axios'
+import movieTrailer from 'movie-trailer'
+import getYouTubeID from 'get-youtube-id'
 
 export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: true
     },
-    fetchUrl: String,
+    fetchUrl: String
   },
   data: () => ({
     model: null,
     movies: [],
     showLoading: true,
-    base_url: "https://image.tmdb.org/t/p/original/",
-    videoId: "",
+    base_url: 'https://image.tmdb.org/t/p/original/',
+    videoId: '',
     playerVars: {
-      autoplay: 1,
-    },
+      autoplay: 1
+    }
   }),
   async mounted() {
-    this.showLoading = true;
+    this.showLoading = true
     try {
-      const response = await axios.get(this.fetchUrl);
-      this.movies = response.data.results;
+      const response = await axios.get(this.fetchUrl)
+      this.movies = response.data.results
     } catch (error) {
-      console.error(error);
+      console.error(error)
     } finally {
-      this.showLoading = false;
+      this.showLoading = false
     }
   },
   methods: {
     handleClick(movie) {
-      console.log("movie title", movie?.title);
+      console.log('movie title', movie?.title)
       if (this.videoId) {
-        this.videoId = "";
+        this.videoId = ''
       } else {
-        movieTrailer(movie?.title || "")
+        movieTrailer(movie?.title || '')
           .then((res) => {
-            this.videoId = getYouTubeID(res);
-            console.log("video id", this.videoId);
+            this.videoId = getYouTubeID(res)
+            console.log('video id', this.videoId)
           })
-          .catch((err) => console.error(err));
+          .catch((err) => console.error(err))
       }
     },
     playing() {
-      console.log("we are watching!!!");
-    },
-  },
-};
+      console.log('we are watching!!!')
+    }
+  }
+}
 </script>
 
 <style scoped>

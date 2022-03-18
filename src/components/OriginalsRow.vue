@@ -49,29 +49,29 @@
 </template>
 
 <script>
-import axios from "../plugins/axios";
-import requests from "../requests";
+import axios from '../plugins/axios'
+import requests from '../requests'
 
 export default {
   data: () => ({
     model: null,
     movies: [],
     showLoading: true,
-    base_url: "https://image.tmdb.org/t/p/original/",
+    base_url: 'https://image.tmdb.org/t/p/original/'
   }),
   async mounted() {
-    this.showLoading = true;
+    this.showLoading = true
     try {
-      const response = await axios.get(requests.fetchNetflixOriginals);
-      this.movies = response.data.results;
+      const response = await axios.get(requests.fetchNetflixOriginals)
+      this.movies = response.data.results
     } catch (error) {
-      console.error(error);
+      console.error(error)
     } finally {
-      this.showLoading = false;
+      this.showLoading = false
     }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <style scoped>

@@ -14,24 +14,24 @@
 
 <script>
 // @ is an alias to /src
-import Row from "@/components/Row.vue";
-import OriginalsRow from "@/components/OriginalsRow.vue";
-import Banner from "@/components/Banner.vue";
-import requests from "../requests";
+import Row from '@/components/Row.vue'
+import OriginalsRow from '@/components/OriginalsRow.vue'
+import Banner from '@/components/Banner.vue'
+import requests from '../requests'
 
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
-      requests,
-    };
+      requests
+    }
   },
   components: {
     Row,
     OriginalsRow,
-    Banner,
-  },
-};
+    Banner
+  }
+}
 </script>
 
 <style scoped>
